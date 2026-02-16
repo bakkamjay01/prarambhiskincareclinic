@@ -406,8 +406,35 @@ footer {
     .nav-links.active {
         display: flex;
     }
+@media (max-width: 768px) {
 
-    .standardbtn { display: none; }
+    #navbar {
+        padding: 12px 15px;
+    }
+
+    .logo a {
+        font-size: 14px;
+    }
+
+    .logo img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-right {
+        gap: 8px;
+    }
+
+    .standardbtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    #themeToggle {
+        padding: 6px 10px;
+    }
+}
+
 }
 /* ================= CARD RESPONSIVE ================= */
 
