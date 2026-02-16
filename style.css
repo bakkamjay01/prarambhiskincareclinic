@@ -1,0 +1,457 @@
+html {
+    scroll-behavior: smooth;
+}
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= THEME COLORS ================= */
+:root {
+    --lavender: #E6E6FA;
+    --lavender-dark: #B57EDC;
+    --lavender-text: #4B4453;
+    --white: #ffffff;
+    --dark-bg: #111;
+    --dark-text: #eee;
+}
+
+/* ================= BODY ================= */
+body {
+    background-color: var(--lavender);
+    color: var(--lavender-text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ================= NAVBAR ================= */
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--white);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Logo */
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--lavender-dark);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* NAV LINKS */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--lavender-text);
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--lavender-dark);
+}
+
+/* ================= HAMBURGER ================= */
+#hamburger {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--lavender-text);
+}
+
+/* ================= BUTTON ================= */
+.standardbtn {
+    position: relative;
+    z-index: 1;
+    background: var(--lavender-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+/* Rainbow border effect */
+.standardbtn::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 30px;
+    background: linear-gradient(
+        90deg,
+        red, orange, yellow, green,
+        blue, indigo, violet, red
+    );
+    background-size: 300%;
+    animation: rainbowMove 6s linear infinite;
+    z-index: -2;
+}
+
+.standardbtn::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: var(--lavender-dark);
+    border-radius: 23px;
+    z-index: -1;
+}
+/* ================= ABOUT IMAGE FIX ================= */
+#about {
+    text-align: center;
+}
+
+#about img {
+    width: 100%;
+    max-width: 400px;   /* controls maximum size */
+    height: auto;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Rainbow animation */
+@keyframes rainbowMove {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+
+/* ================= SPLASH SCREEN ================= */
+#splash {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--lavender);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+#splash img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    /* Start slightly small and transparent */
+    transform: scale(0.95);
+    opacity: 0;
+
+    animation: splashZoomFade 3s ease forwards;
+}
+
+/* Zoom + Fade In */
+@keyframes splashZoomFade {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* Fade Out Class */
+#splash.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ================= SECTIONS ================= */
+section {
+    background-color: var(--white);
+    padding: 60px 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+section h2 {
+    color: var(--lavender-dark);
+    margin-bottom: 15px;
+}
+
+section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* ================= SERVICE CARDS ================= */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: linear-gradient(145deg, #E6E6FA, #ffffff);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.service-card h3 {
+    color: var(--lavender-dark);
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Golden hover effect */
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.1),
+        0 0 15px rgba(212,175,55,0.6),
+        0 0 30px rgba(212,175,55,0.4);
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 15px;
+    background: linear-gradient(45deg,#d4af37,#f9e076,#d4af37);
+    background-size: 300%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+    animation: goldMove 4s linear infinite;
+}
+
+@keyframes goldMove {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+
+/* ================= AUTO SCROLL GALLERY ================= */
+.auto-scroll-gallery {
+    overflow-x: hidden;
+    width: 100%;
+    background: black;
+}
+
+.scroll-track {
+    display: flex;
+    width: max-content;
+    animation: scrollLeft 20s linear infinite;
+}
+
+.scroll-track img {
+    width: 350px;
+    height: 220px;
+    object-fit: contain;
+    margin-right: 20px;
+    border-radius: 15px;
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.auto-scroll-gallery:hover .scroll-track {
+    animation-play-state: paused;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: var(--lavender-dark);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 18px;
+    transition: all 0.4s ease;
+}
+
+.footer-social a:hover {
+    background: linear-gradient(45deg, #d4af37, #f9e076);
+    color: #000;
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 15px rgba(212,175,55,0.6);
+}
+
+.footer-map {
+    position: relative;
+    border-radius: 20px;
+    max-width: 350px;
+    margin: auto;
+    padding: 4px;
+    background: linear-gradient(45deg,#d4af37,#f9e076,#d4af37);
+    background-size: 300%;
+    animation: goldMove 4s linear infinite;
+    transition: transform 0.4s ease;
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 220px;
+    border: none;
+    border-radius: 16px;
+}
+
+/* Hover lift */
+.footer-map:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 20px rgba(212,175,55,0.6);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .logo img { height: 38px; }
+}
+
+@media (max-width: 768px) {
+    #hamburger { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--white);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .standardbtn { display: none; }
+}
+/* ================= CARD RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .service-card img {
+        max-width: 180px;
+    }
+}
+/* ================= DARK THEME ================= */
+
+.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.dark-theme section {
+    background-color: #1c1c1c;
+}
+
+.dark-theme #navbar {
+    background-color: #1a1a1a;
+}
+
+.dark-theme .service-card {
+    background: linear-gradient(145deg, #222, #111);
+    color: #eee;
+}
+
+.dark-theme footer {
+    background: #000;
+}
+
+
